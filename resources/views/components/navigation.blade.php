@@ -1,5 +1,5 @@
 <header>
-                    <nav class="navbar container navbar-expand-lg">
+                    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 sticky-top">
                         <div class="container-fluid">
                             <!-- logo -->
                             <a class="navbar-brand position-relative p-1" href="{{route('home')}}"><img
@@ -13,16 +13,16 @@
                                 <ul
                                     class="navbar-nav position-relative ms-auto mx-5 mb-2 mb-lg-0 d-flex gap-4 justify-content-center align-items-center">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
+                                        <a  class="{{request()->is('/')   ? 'nav-link active' : 'nav-link'}}" aria-current="page" href="{{route('home')}}">Home</a>
                                     </li>
                                     <li class="nav-item position-relative">
-                                        <a class="nav-link" href="{{route('about')}}">About</a>
+                                        <a class="{{request()->is('about') ? 'nav-link active' : 'nav-link'}}" href="{{route('about')}}">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('blog')}}">Blog</a>
+                                        <a class="{{request()->is('blog') ? 'nav-link active' : 'nav-link'}}" href="{{route('blog')}}">Blog</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('contact')}}">Contact</a>
+                                        <a class="{{request()->is('contact') ? 'nav-link active' : 'nav-link'}}" href="{{route('contact')}}">Contact</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">

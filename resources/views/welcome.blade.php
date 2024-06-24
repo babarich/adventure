@@ -1,30 +1,32 @@
   @extends('layouts.app')
   @section('hero')
   <section id="hero">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-11 col-md-12 text-center" data-aos="fade">
-                                <div>
-                                    <h1>EXPLORE </h1>
-                                    <h1>THE WORLD</h1>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    </p>
-                                    <div class="globalBtn mt-4">
-                                        <ul>
-                                            <li>
-                                                <a href="about.html"> Discover Now
-                                                    <span></span><span></span><span></span><span></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-11 col-md-12 text-center" data-aos="fade">
+                <div>
+                    <h1>EXPLORE </h1>
+                    <h1>THE WORLD</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem
+                        Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    </p>
+                    <div class="globalBtn mt-4">
+                        <ul>
+                            <li>
+                                <a href="{{route('about')}}"> Discover Now
+                                    <span></span><span></span><span></span><span></span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
   @endsection
 
@@ -76,40 +78,11 @@
         <section id="about">
             <div class="blueBg">
             </div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-9">
-                        <form id="about-form"
-                            class="d-flex gap-lg-2 gap-md-1 gap-sm-4 gap-3 justify-content-evenly align-items-md-center"
-                            data-aos="fade-down">
-                            <div id="about-message"></div>
-                            <div>
-                                <h6>Name</h6>
-                                <input type="text" name="name" placeholder="Your Name" required>
-                            </div>
-                            <div>
-                                <h6>Destination</h6>
-                                <select name="country" id="destination">
-                                    <option value="destination" selected disabled>Destination</option>
-                                    <option value="turkey">Turkey</option>
-                                    <option value="sweden">Sweden</option>
-                                    <option value="indonesia">Indonesia</option>
-                                </select>
-                            </div>
-                            <div>
-                                <h6>Tour Days</h6>
-                                <input type="date" name="name" required>
-                            </div>
-                            <div class="globalBtn">
-                                <ul>
-                                    <li>
-                                        <button type="submit">Book Now
-                                            <span></span><span></span><span></span><span></span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
+                        
                         <div class="col-lg-10 col-md-9" data-aos="fade-up">
                             <div>
                                 <h4>About Us</h4>
@@ -123,7 +96,7 @@
                                 <div class="globalBtnActive justify-content-md-start justify-content-center mt-4">
                                     <ul>
                                         <li>
-                                            <a href="about.html"> Learn More
+                                            <a href="{{route('about')}}"> Learn More
                                                 <span></span><span></span><span></span><span></span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
@@ -135,7 +108,7 @@
                     </div>
                     <div class="col-lg-4 col-sm-9 col-12 about-Image">
                         <div class="aboutImg position-relative" data-aos="fade-up">
-                            <figure><img src="assets/images/index/about-img.png" alt="about-sec"></figure>
+                            <figure><img src="data:image/jpeg;base64,{{ $customer->image }}" alt="about-sec"></figure>
                             <div class="customer d-flex flex-column justify-content-between align-items-center">
                                 <div class="d-flex">
                                     <h2 class="count">25 </h2>
@@ -167,14 +140,14 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
                         </p>
                         <div class="offer">
-                            <img src="assets/images/index/special-img2.png" alt="discount">
+                            <img src="data:image/jpeg;base64,{{ $offer->image }}"  alt="discount">
                             <div class="overlaytwo">
                                 <div class="overlay_text">
                                     <h3>Discount up 50%</h3>
                                     <div class="globalBtn mt-lg-5 mt-4">
                                         <ul>
                                             <li>
-                                                <a href="contact.html">Book Now
+                                                <a href="{{route('book')}}">Book Now
                                                     <span></span><span></span><span></span><span></span>
                                                 </a>
                                             </li>
@@ -186,14 +159,14 @@
                     </div>
                     <div class="col-md-6 mt-md-0 mt-4" data-aos="fade-up">
                         <div class="offer">
-                            <img src="assets/images/index/special-img1.png" alt="discount">
+                            <img src="data:image/jpeg;base64,{{ $special->image }}" alt="discount">
                             <div class="overlaytwo">
                                 <div class="overlay_text">
                                     <h3>Discount up 50%</h3>
                                     <div class="globalBtn mt-lg-5 mt-4">
                                         <ul>
                                             <li>
-                                                <a href="contact.html">Book Now
+                                                <a href="{{route('book')}}">Book Now
                                                     <span></span><span></span><span></span><span></span>
                                                 </a>
                                             </li>
@@ -213,7 +186,7 @@
         <!-- ====== End 1.5 special offer section ====== -->
 
         <!-- ====== 1.6 tours section ====== -->
-        <section id="tour">
+        <section id="tour" style="background-image:none;">
             <div class="container">
                 <div data-aos="fade" data-aos-duration="2000">
                     <h4>Tour</h4>
@@ -227,7 +200,7 @@
                         <div class="globalBtnActive">
                             <ul>
                                 <li>
-                                    <a href="destinations.html"> View all
+                                    <a href="{{route('destination')}}"> View all
                                         <span></span><span></span><span></span><span></span>
                                     </a>
                                 </li>
@@ -237,54 +210,17 @@
                 </div>
                 <div class="tourCards card-text mt-5">
                     <div class="row gap-4 ">
+                        @foreach($travels as $travel)
                         <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="100">
                             <div>
-                                <figure><img src="assets/images/index/tour-img1.png" alt="tour-img"></figure>
+                                <figure><img src="data:image/jpeg;base64,{{ $travel->image }}" alt="travel"></figure>
                                 <h6>Explore beauty of Turkey</h6>
                                 <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
                                 <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="500">
-                            <div>
-                                <figure><img src="assets/images/index/tour-img2.png" alt="tour-img"></figure>
-                                <h6>Explore beauty of Sweden</h6>
-                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
-                                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="900">
-                            <div>
-                                <figure><img src="assets/images/index/tour-img3.png" alt="tour-img"></figure>
-                                <h6>Explore beauty of Indonesia</h6>
-                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
-                                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="100">
-                            <div>
-                                <figure><img src="assets/images/index/tour-img4.png" alt="tour-img"></figure>
-                                <h6>Explore beauty of Pakistan</h6>
-                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
-                                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="500">
-                            <div>
-                                <figure><img src="assets/images/index/tour-img5.png" alt="tour-img"></figure>
-                                <h6>Explore beauty of Dubai</h6>
-                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
-                                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="900">
-                            <div>
-                                <figure><img src="assets/images/index/tour-img6.png" alt="tour-img"></figure>
-                                <h6>Explore beauty of Paris</h6>
-                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
-                                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
+
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -292,7 +228,7 @@
         <!-- ====== End 1.6 tours section ====== -->
 
         <!-- ====== 1.7 why choose us section ====== -->
-        <section id="choose">
+        <section id="choose" style="background-image:none;">
             <div class="chooseBg">
                 <div class="position-relative z-2" data-aos="fade" data-aos-duration="2000">
                     <h4>Why choose us</h4>
@@ -301,7 +237,7 @@
                     <div class="globalBtn mt-lg-5 mt-md-5">
                         <ul>
                             <li>
-                                <a href="contact.html">contact us
+                                <a href="{{route('contact')}}">contact us
                                     <span></span><span></span><span></span><span></span>
                                 </a>
                             </li>
@@ -437,7 +373,7 @@
                             <div class="globalBtnActive mt-3" data-aos="fade" data-aos-duration="2000">
                                 <ul>
                                     <li>
-                                        <a href="services.html"> Learn More
+                                        <a href="{{route('service')}}"> Learn More
                                             <span></span><span></span><span></span><span></span>
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </a>
@@ -689,7 +625,7 @@
                 <div class="globalBtn mt-lg-4 mt-3">
                     <ul>
                         <li>
-                            <a href="contact.html">Book Now
+                            <a href="{{route('book')}}">Book Now
                                 <span></span><span></span><span></span><span></span>
                             </a>
                         </li>

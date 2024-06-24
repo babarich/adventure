@@ -42,7 +42,7 @@
                                 <div class="globalBtnActive justify-content-md-start justify-content-center mt-3">
                                     <ul>
                                         <li>
-                                            <a href="destinations.html"> Destinations
+                                            <a href="{{route('destination')}}"> Destinations
                                                 <span></span><span></span><span></span><span></span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
@@ -101,7 +101,7 @@
                             <div class="globalBtnActive mt-3" data-aos="fade" data-aos-duration="2000">
                                 <ul>
                                     <li>
-                                        <a href="contact.html"> Contact Us
+                                        <a href="{{route('contact')}}"> Contact Us
                                             <span></span><span></span><span></span><span></span>
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </a>
@@ -125,7 +125,7 @@
                     <div class="globalBtn mt-lg-5 mt-md-5">
                         <ul>
                             <li>
-                                <a href="contact.html">contact us
+                                <a href="{{route('contact')}}">contact us
                                     <span></span><span></span><span></span><span></span>
                                 </a>
                             </li>
@@ -136,42 +136,18 @@
             <div class="chooseCrads position-relative z-2">
                 <div class="container">
                     <div class="row gap-md-0 gap-4 justify-content-center card-text">
-                        <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
+                         @foreach($travels as $travel)
+                        <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="100">
                             <div>
-                                <figure><img src="assets/images/icon/choose-1.svg" alt="chooseIcon"></figure>
-                                <h6>Tour and Travel</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                                    incididunt
-                                </p>
+                                <figure><img src="data:image/jpeg;base64,{{ $travel->image }}" alt="travel"></figure>
+                                <h6>Explore beauty of Turkey</h6>
+                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
+                                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
-                            <div>
-                                <figure><img src="assets/images/icon/choose-2.svg" alt="chooseIcon"></figure>
-                                <h6>campus</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                                    incididunt
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
-                            <div>
-                                <figure><img src="assets/images/icon/choose-3.svg" alt="chooseIcon"></figure>
-                                <h6>Adventure Tour</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                                    incididunt
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 d-lg-block d-none" data-aos="fade-up" data-aos-delay="1300">
-                            <div>
-                                <figure><img src="assets/images/icon/choose-4.svg" alt="chooseIcon"></figure>
-                                <h6>photography</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                                    incididunt
-                                </p>
-                            </div>
-                        </div>
+
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
@@ -254,7 +230,7 @@
                 <div class="globalBtn mt-lg-4 mt-3">
                     <ul>
                         <li>
-                            <a href="contact.html">Book Now
+                            <a href="{{route('book')}}">Book Now
                                 <span></span><span></span><span></span><span></span>
                             </a>
                         </li>

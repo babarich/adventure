@@ -12,22 +12,32 @@
    @include('components.header')
 
 </head>
+ <style type="text/css">
+            .account-block{
 
+    min-height: 100vh;
+    background-color: #EC6608;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    overflow: hidden;
+            }
+        </style>
+
+@php
+$images = App\Models\Media::query()->where('category', 'Hero Home')->orderBy('updated_at', 'desc')->get();
+@endphp
 <body>
     <!-- site-wrapper -->
     <div class="site-wrapper">
         <!-- header slider start -->
-        <div class="header-slider">
-            <div class="slide active">
-                <img src="assets/images/index/header-slider1.png" alt="slider-img">
+      <div class="header-slider account-block">
+        @foreach ($images as $index => $image)
+        <div class="slide @if($index === 0) active @endif">
+                <img src="data:image/jpeg;base64,{{ $image->image }}" alt="slider-img">
             </div>
-            <div class="slide">
-                <img src="assets/images/index/header-slider2.png" alt="slider-img">
-            </div>
-            <div class="slide">
-                <img src="assets/images/index/header-slider3.png" alt="slider-img">
-            </div>
-        </div>
+        @endforeach
+    </div>
         <!-- header slider end -->
         <div class="overlay">
             <div class="header-content">
