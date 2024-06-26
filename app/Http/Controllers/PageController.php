@@ -74,6 +74,7 @@ class PageController extends Controller
 
     public function store(Request $request){
 
+    
          $validatedData = $request->validate([
              'name' => 'required',
              'email' => 'required|email',

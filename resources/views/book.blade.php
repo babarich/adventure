@@ -19,30 +19,30 @@
                             </div>
                         </div>
                         <div id="contact-message"></div>
-                  <form id="contact-form" method="post" action="{{route('store')}}">
+                  <form  method="POST" action="{{route('store')}}">
                     @csrf
                     <div>
-                                <input type="text" name="name" placeholder="Name" required>
-                                <input type="email" name="email" placeholder="Email Address" required>
-                            </div>
-                            <div>
-                                <input type="date" name="date" placeholder="Date and time" required>
-                            </div>
-                            <textarea name="description" placeholder="Message"></textarea>
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div>
+                        <input type="date" name="date" placeholder="Date and time" required>
+                    </div>
+                     <textarea name="description" placeholder="Message"></textarea>
                         
-                                    <div class="col-12">
-                                      <div class="globalBtnActive mt-sm-5 mt-4 p-0">
-                                        <ul>
-                                            <li>
-                                                <button type="submit">Book Now
-                                                    <span></span><span></span><span></span><span></span>
-                                                </button>
-                                            </li>
-                                        </ul>                          </div>
-                                    </div>
-                            
-                                </div>
-                                    </form>
+                        <div class="col-12">
+                          <div class="globalBtnActive mt-sm-5 mt-4 p-0">
+                            <ul>
+                                <li>
+                                    <button type="submit">Book Now
+                                        <span></span><span></span><span></span><span></span>
+                                    </button>
+                                </li>
+                            </ul>                          </div>
+                        </div>
+                
+                    </div>
+                </form>
                       
                     </div>
                     <div class="col-md-4 d-flex justify-content-center align-items-center" data-aos="fade"
