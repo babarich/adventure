@@ -6,6 +6,8 @@ use App\Models\Book;
 use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use PgSql\Lob;
 
 class PageController extends Controller
 {
@@ -91,6 +93,7 @@ class PageController extends Controller
             DB::commit();
          }catch(\Exception $e){
             DB::rollBack();
+            Log::info('error', [$e]);
             return redirect()->back()->with('error', 'Something Went Wrong Try again later');
 
          }

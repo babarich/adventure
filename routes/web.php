@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MangementController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
@@ -57,7 +58,7 @@ Route::group(['middleware' => 'auth'], function (){
 
  Route::group(['prefix' => 'bookings'], function (){
         Route::name('booking.')->group(function (){
-            Route::controller(MangementController::class)->group(function (){
+            Route::controller(BookingController::class)->group(function (){
                 Route::get('index', 'index')->name('index');
             });
         });

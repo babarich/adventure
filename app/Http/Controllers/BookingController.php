@@ -12,6 +12,7 @@ class BookingController extends Controller
 
      $books = Book::query()->orderBy('updated_at', 'desc')->get();
 
+
      return view('booking.index', compact('books'));
     }
 }

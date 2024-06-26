@@ -33,28 +33,15 @@
                                </tr>
                                </thead>
                                 <tbody>
-                                @foreach($images as $image)
+                                @foreach($books as $book)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$image->category}}</td>
-                                        <td>{{$image->user->name ?? ''}}</td>
-                                        <td>{{$image->created_at}}</td>
-                                        <td>
-                                         <img src="data:image/jpeg;base64,{{ $image->image }}" alt="{{ $image->name }}" width="100" height="50">
-                                        </td>
-                                       <td>
-                                            <a href="{{route('manage.edit', $image->id)}}" class="btn btn-sm btn-primary btn-wave waves-effect waves-light">
-                                                <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
-                                            </a>
-                                            <a href="{{route('manage.show', $image->id)}}" class="btn btn-sm btn-success btn-wave waves-effect waves-light">
-                                                <i class="ri-eye-line align-middle me-2 d-inline-block"></i>View
-                                            </a>
-
-                                            <a class="btn btn-sm btn-danger btn-wave waves-effect waves-light deleteGroup"
-                                            data-id="{{$image->id}}">
-                                                <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
-                                            </a>
-                                        </td>
+                                        <td>{{$book->name}}</td>
+                                        <td>{{$book->email ?? ''}}</td>
+                                        <td>{{$book->date}}</td>
+                                        <td>{{$book->description}}</td>
+                                        <td>{{$book->created_at}}</td>
+                                    
                                     </tr>
                                 @endforeach
                                </tbody>
