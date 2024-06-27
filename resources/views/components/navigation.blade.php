@@ -1,5 +1,7 @@
 <header>
-                    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5  py-lg-0 sticky-top" style="background-color:#FB8E26">
+                   <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-lg-0 sticky-top w-100" style="background-color: #FB8E26; position: fixed; top: 0; z-index: 1030;">
+  
+
                         <div class="container-fluid">
                             <!-- logo -->
                             <a class="navbar-brand position-relative p-1" href="{{route('home')}}"><img
