@@ -108,7 +108,12 @@
                     </div>
                     <div class="col-lg-4 col-sm-9 col-12 about-Image">
                         <div class="aboutImg position-relative" data-aos="fade-up">
-                            <figure><img src="data:image/jpeg;base64,{{ $customer->image }}" alt="about-sec"></figure>
+                            <figure>
+                                @if($customer)
+                                <img src="data:image/jpeg;base64,{{ $customer->image }}" alt="about-sec">
+                                @endif
+                              
+                            </figure>
                             <div class="customer d-flex flex-column justify-content-between align-items-center">
                                 <div class="d-flex">
                                     <h2 class="count">25 </h2>
@@ -140,7 +145,10 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
                         </p>
                         <div class="offer">
-                            <img src="data:image/jpeg;base64,{{ $offer->image }}"  alt="discount">
+                            @if($offer)
+                            <img src="data:image/jpeg;base64,{{$offer->image}}"  alt="discount">
+                            @endif
+                           
                             <div class="overlaytwo">
                                 <div class="overlay_text">
                                     <h3>Discount up 50%</h3>
@@ -159,7 +167,10 @@
                     </div>
                     <div class="col-md-6 mt-md-0 mt-4" data-aos="fade-up">
                         <div class="offer">
+                            @if($special)
                             <img src="data:image/jpeg;base64,{{ $special->image }}" alt="discount">
+                            @endif
+                            
                             <div class="overlaytwo">
                                 <div class="overlay_text">
                                     <h3>Discount up 50%</h3>
@@ -210,6 +221,7 @@
                 </div>
                 <div class="tourCards card-text mt-5">
                     <div class="row gap-4 ">
+                        @if(count($travels) > 0)
                         @foreach($travels as $travel)
                         <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="100">
                             <div>
@@ -221,6 +233,9 @@
                         </div>
 
                         @endforeach
+
+                        @endif
+                       
                     </div>
                 </div>
             </div>
