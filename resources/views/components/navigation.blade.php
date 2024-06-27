@@ -44,7 +44,7 @@
                                 <div class="globalBtn">
                                     <ul>
                                         <li>
-                                            <a href="{{route('contact')}}">Book Now
+                                            <a href="{{route('book')}}">Book Now
                                                 <span></span><span></span><span></span><span></span>
                                             </a>
                                         </li>
