@@ -97,7 +97,7 @@ $images = App\Models\Media::query()->where('category', 'Hero Home')->orderBy('up
                             <div class="globalBtn justify-content-start mt-lg-4 mt-4 ">
                                 <ul>
                                     <li>
-                                        <a href="contact.html">Book Now
+                                        <a href="{{route('book')}}">Book Now
                                             <span></span><span></span><span></span><span></span>
                                         </a>
                                     </li>

@@ -604,9 +604,7 @@ input:active {
     width: 100vw;
 }
 
-header {
-    padding-top: 5px;
-}
+
 
 .navbar-brand img {
     width: 200px;
@@ -617,8 +615,13 @@ header nav a {
 }
 
 header nav a:hover {
-    color: #FB8E26 !important;
+    color: #0A1727 !important;
 }
+
+header nav a:active {
+    color: #0A1727 !important;
+}
+
 
 header .nav-item {
     position: relative;
@@ -653,7 +656,7 @@ header .nav-item:hover::after {
 }
 
 .active {
-    color: #FB8E26 !important;
+    color: #0A1727 !important;
 }
 
 .pages-active {

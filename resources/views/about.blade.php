@@ -115,8 +115,9 @@
         </section>
         <!-- ====== End 1.9 what we do section ====== -->
 
+       
         <!-- ====== 1.7 why choose us section ====== -->
-        <section id="choose" class="choose">
+        <section id="choose" style="background-image:none;">
             <div class="chooseBg">
                 <div class="position-relative z-2" data-aos="fade" data-aos-duration="2000">
                     <h4>Why choose us</h4>
@@ -136,18 +137,42 @@
             <div class="chooseCrads position-relative z-2">
                 <div class="container">
                     <div class="row gap-md-0 gap-4 justify-content-center card-text">
-                         @foreach($travels as $travel)
-                        <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
                             <div>
-                                <figure><img src="data:image/jpeg;base64,{{ $travel->image }}" alt="travel"></figure>
-                                <h6>Explore beauty of Turkey</h6>
-                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
-                                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                                <figure><img src="assets/images/icon/choose-1.svg" alt="chooseIcon"></figure>
+                                <h6>Tour and Travel</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+                                    incididunt
+                                </p>
                             </div>
                         </div>
-
-                        @endforeach
-                        
+                        <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
+                            <div>
+                                <figure><img src="assets/images/icon/choose-2.svg" alt="chooseIcon"></figure>
+                                <h6>campus</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+                                    incididunt
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
+                            <div>
+                                <figure><img src="assets/images/icon/choose-3.svg" alt="chooseIcon"></figure>
+                                <h6>Adventure Tour</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+                                    incididunt
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 d-lg-block d-none" data-aos="fade-up" data-aos-delay="1300">
+                            <div>
+                                <figure><img src="assets/images/icon/choose-4.svg" alt="chooseIcon"></figure>
+                                <h6>photography</h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+                                    incididunt
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

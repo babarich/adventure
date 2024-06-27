@@ -12,7 +12,23 @@ use PgSql\Lob;
 class PageController extends Controller
 {
     public function about(Request $request)  {
-        return view('about');
+        $customer = Media::query()
+        ->where('category', 'Happy Customer')
+        ->orderBy('updated_at', 'desc')
+        ->first();
+           $special = Media::query()
+        ->where('category', 'Speicial Offer 1')
+        ->orderBy('updated_at', 'desc')
+        ->first();
+           $offer = Media::query()
+        ->where('category', 'Speicial Offer 2')
+        ->orderBy('updated_at', 'desc')
+        ->first();
+        $travels = Media::query()
+                    ->where('category', 'Travel')
+                    ->orderBy('updated_at', 'desc')
+                    ->get();
+        return view('about', compact('customer','special','offer','travels'));
     }
     public function blog(Request $request)  {
         return view('blog');
