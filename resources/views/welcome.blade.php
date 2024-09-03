@@ -5,8 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-11 col-md-12 text-center" data-aos="fade">
                 <div>
-                    <h1>{{ucfirst(strtoupper($title->content))}} </h1>
-                    <h1>{{ucfirst(strtoupper($subTitle->content))}}</h1>
+                    <h1>{{isset($title) ? ucfirst(strtoupper($title->content ?? '')) : ''}} </h1>
+                    <h1>{{isset($subTitle) ? ucfirst(strtoupper($subTitle->content ?? '')) : ''}}</h1>
                     <p>{{$paraTit->content ?? ''}}
                     </p>
                     <div class="globalBtn mt-4">
