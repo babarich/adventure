@@ -64,7 +64,27 @@ Route::group(['middleware' => 'auth'], function (){
         });
     });
 
+    Route::group(['prefix' => 'contents'], function (){
+        Route::name('content.')->group(function (){
+            Route::controller(\App\Http\Controllers\ContentController::class)->group(function (){
+                Route::get('index', 'index')->name('index');
+                Route::get('create', 'create')->name('create');
+                Route::post('store', 'store')->name('store');
+            });
+        });
+    });
 
+
+
+    Route::group(['prefix' => 'faqs'], function (){
+        Route::name('faq.')->group(function (){
+            Route::controller(\App\Http\Controllers\FaqController::class)->group(function (){
+                Route::get('index', 'index')->name('index');
+                Route::get('create', 'create')->name('create');
+                Route::post('store', 'store')->name('store');
+            });
+        });
+    });
 
 });
 

@@ -44,7 +44,7 @@ $images = App\Models\Media::query()->where('category', 'Hero Home')->orderBy('up
                 <!-- ====== 1.1 Header section ====== -->
                @include('components.navigation')
                 <!-- ====== End 1.1 Header section ====== -->
-                @yield('hero') 
+                @yield('hero')
                 <!-- ====== 1.2 hero section ====== -->
                 <!-- ====== End 1.2 hero section ====== -->
             </div>
@@ -53,7 +53,7 @@ $images = App\Models\Media::query()->where('category', 'Hero Home')->orderBy('up
         <main class="py-4">
         @yield('content')
         </main>
-      
+
 
         <!-- ====== 1.17 footer section ====== -->
         <footer>

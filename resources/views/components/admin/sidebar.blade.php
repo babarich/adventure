@@ -38,7 +38,7 @@
                         <i class="bx bx-photo-album side-menu__icon"></i>
                         <span class="side-menu__label">Media</span>
                     </a>
-                </li>   
+                </li>
 
 
 
@@ -48,7 +48,23 @@
                         <i class="bx bx-book side-menu__icon"></i>
                         <span class="side-menu__label">Bookings</span>
                     </a>
-                </li>   
+                </li>
+
+
+                <li class="slide">
+                    <a href="{{route('content.index')}}"  class="{{request()->is('*content*') ? 'side-menu__item active' : 'side-menu__item'}}" >
+                        <i class="bx bx-pen side-menu__icon"></i>
+                        <span class="side-menu__label">Contents</span>
+                    </a>
+                </li>
+
+
+                <li class="slide">
+                    <a href="{{route('faq.index')}}"  class="{{request()->is('*faq*') ? 'side-menu__item active' : 'side-menu__item'}}" >
+                        <i class="bx bx-tab side-menu__icon"></i>
+                        <span class="side-menu__label">Faq's</span>
+                    </a>
+                </li>
 
 
             </ul>

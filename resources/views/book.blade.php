@@ -6,7 +6,7 @@
             <div class="container">
                 <div data-aos="fade" data-aos-duration="1500">
                     <h4>Book with  Us</h4>
-                
+
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         tempor ipsum dolor sit amet.
                         labore</p>
@@ -29,7 +29,7 @@
                         <input type="date" name="date" placeholder="Date and time" required>
                     </div>
                      <textarea name="description" placeholder="Message"></textarea>
-                        
+
                         <div class="col-12">
                           <div class="globalBtnActive mt-sm-5 mt-4 p-0">
                             <ul>
@@ -38,16 +38,16 @@
                                         <span></span><span></span><span></span><span></span>
                                     </button>
                                 </li>
-                            </ul>                          </div>
+                            </ul>
+                          </div>
                         </div>
-                
-                    </div>
+
                 </form>
-                      
+
                     </div>
                     <div class="col-md-4 d-flex justify-content-center align-items-center" data-aos="fade"
                         data-aos-duration="1500">
-                      
+
                     </div>
                 </div>
             </div>
@@ -55,5 +55,5 @@
         <!-- ====== End 9.2 contact section ====== -->
 
   @endsection
-  
-  
+
+
