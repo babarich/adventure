@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    
+
     public function index(Request $request){
 
      $books = Book::query()->orderBy('updated_at', 'desc')->get();
@@ -15,4 +15,6 @@ class BookingController extends Controller
 
      return view('booking.index', compact('books'));
     }
+
+
 }

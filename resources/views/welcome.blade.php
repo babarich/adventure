@@ -5,8 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-11 col-md-12 text-center" data-aos="fade">
                 <div>
-                    <h1>{{isset($title) ? ucfirst(strtoupper($title->content ?? '')) : ''}} </h1>
-                    <h1>{{isset($subTitle) ? ucfirst(strtoupper($subTitle->content ?? '')) : ''}}</h1>
+                    <h1>{{ucfirst(strtoupper($title->content ?? ''))}} </h1>
+                    <h1>{{ucfirst(strtoupper($subTitle->content ?? ''))}}</h1>
                     <p>{{$paraTit->content ?? ''}}
                     </p>
                     <div class="globalBtn mt-4">
@@ -29,8 +29,6 @@
 
 <!-- ====== 1.3 features section ====== -->
   <section id="features">
-
-
   <div class="container card-text">
                 <div class="row">
                     <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
@@ -140,13 +138,11 @@
                         <h3> {{$specialOne->content ?? ''}}</h3>
                         <p>
                             {{$specialPara1->content ?? ''}}
-
                         </p>
                         <div class="offer">
                             @if($offer)
                             <img src="data:image/jpeg;base64,{{$offer->image}}"  alt="discount">
                             @endif
-
                             <div class="overlaytwo">
                                 <div class="overlay_text">
                                     <h3>Discount up 50%</h3>
@@ -227,7 +223,6 @@
                                 <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
-
                         @endforeach
 
                         @endif
@@ -399,60 +394,19 @@
                     <h2>Experience The World With Us</h2>
                 </div>
                 <div class="row justify-content-md-between justify-content-center gap-md-0 gap-4">
-                    <div class=" col-md-4 col-sm-8 col-10" data-aos="fade-up" data-aos-delay="100">
-                        <div class="teamCard">
-                            <img src="assets/images/index/team-img1.png" alt="teamimg">
-                            <div class="overlaythree">
-                                <div class="overlay_text">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                                    </div>
+                    @if(count($teams) > 0)
+                        @foreach($teams as $team)
+                            <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
+                                <div class="teamCard">
+                                    <figure><img src="data:image/jpeg;base64,{{ $team->image }}" alt="tour-img" style="max-height: 350px"></figure>
+                                </div>
+                                <div>
+                                    <h6>{{$team->name}}</h6>
+                                    <p>{{$team->title}}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <h6>James Bowel</h6>
-                            <p>Tour Guide</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-8 col-10" data-aos="fade-up" data-aos-delay="500">
-                        <div class="teamCard">
-                            <img src="assets/images/index/team-img2.png" alt="teamimg">
-                            <div class="overlaythree">
-                                <div class="overlay_text">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h6>Lucy Amanda</h6>
-                            <p>Tour Guide</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-8 col-10" data-aos="fade-up" data-aos-delay="900">
-                        <div class="teamCard">
-                            <img src="assets/images/index/team-img3.png" alt="teamimg">
-                            <div class="overlaythree">
-                                <div class="overlay_text">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h6>Victoria Bells</h6>
-                            <p>Tour Guide</p>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </section>
@@ -501,54 +455,24 @@
                         <h4>Testimonials</h4>
                         <h2>We're All About Your Satisfaction</h2>
                     </div>
-                    <div class="col-md-4 col-sm-8 col-11" data-aos="fade-up" data-aos-delay="100">
-                        <div class="d-flex flex-column align-items-center justify-content-center">
-                            <figure><img src="assets/images/index/testimonials-1.png" alt="testimonialsImg"></figure>
-                            <h6>Raisa Barker</h6>
-                            <p>Tourist</p>
-                            <div class="d-flex gap-2 mt-3 mb-4 pb-2">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+                    @if(count($testimonials) > 0)
+                        @foreach($testimonials as $testimonial)
+                            <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <figure></figure>
+                                    <h6>{{$testimonial->name}}</h6>
+                                    <p>{{$testimonial->title}}</p>
+                                    <div class="d-flex gap-2 mt-3 mb-4 pb-2">
+                                        @include('rate_comp')
+                                    </div>
+                                    <p>
+                                        {{$testimonial->content}}
+                                    </p>
+                                </div>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-8 col-11" data-aos="fade-up" data-aos-delay="500">
-                        <div class="d-flex flex-column align-items-center justify-content-center">
-                            <figure><img src="assets/images/index/testimonials-2.png" alt="testimonialsImg"></figure>
-                            <h6>Terrence Baker</h6>
-                            <p>Tourist</p>
-                            <div class="d-flex gap-2 mt-3 mb-4 pb-2">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-8 col-11" data-aos="fade-up" data-aos-delay="900">
-                        <div class="d-flex flex-column align-items-center justify-content-center">
-                            <figure><img src="assets/images/index/testimonials-3.png" alt="testimonialsImg"></figure>
-                            <h6>Xiong Lee</h6>
-                            <p>Tourist</p>
-                            <div class="d-flex gap-2 mt-3 mb-4 pb-2">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            </p>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
+
                 </div>
             </div>
         </section>
@@ -599,45 +523,23 @@
                 </div>
                 <div class="blogCards mt-lg-5 mt-md-4">
                     <div class="row gap-4 justify-content-center card-text">
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
-                            <div>
-                                <figure><img src="assets/images/index/blog-1.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Traveller</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua…. </p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="500">
-                            <div>
-                                <figure><img src="assets/images/index/blog-2.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Vacation</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua….</p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="900">
-                            <div>
-                                <figure><img src="assets/images/index/blog-3.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Boating</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua….</p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
+                        @if(count($blogs) > 0)
+                            @foreach($blogs as $blog)
+                                <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
+                                    <div>
+                                        <figure><img src="data:image/jpeg;base64,{{ $blog->image }}" alt="tour-img" style="max-height: 350px"></figure>
+                                        <a href="#">
+                                            <p class="blogCategory">{{$blog->tag}}</p>
+                                        </a>
+                                        <a href="#">
+                                            <h6>{{$blog->title}}</h6>
+                                        </a>
+                                        <p>{{isset($blog->content) ? substr($blog->content,0,30) . '...' : ''}} </p>
+                                        <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

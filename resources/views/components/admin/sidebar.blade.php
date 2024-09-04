@@ -54,7 +54,7 @@
                 <li class="slide">
                     <a href="{{route('content.index')}}"  class="{{request()->is('*content*') ? 'side-menu__item active' : 'side-menu__item'}}" >
                         <i class="bx bx-pen side-menu__icon"></i>
-                        <span class="side-menu__label">Contents</span>
+                        <span class="side-menu__label">Home Content</span>
                     </a>
                 </li>
 
@@ -63,6 +63,30 @@
                     <a href="{{route('faq.index')}}"  class="{{request()->is('*faq*') ? 'side-menu__item active' : 'side-menu__item'}}" >
                         <i class="bx bx-tab side-menu__icon"></i>
                         <span class="side-menu__label">Faq's</span>
+                    </a>
+                </li>
+
+
+                <li class="slide">
+                    <a href="{{route('blog.index')}}"  class="{{request()->is('*blog*') ? 'side-menu__item active' : 'side-menu__item'}}" >
+                        <i class="bx bxl-blogger side-menu__icon"></i>
+                        <span class="side-menu__label">Blog's</span>
+                    </a>
+                </li>
+
+
+                <li class="slide">
+                    <a href="{{route('team.index')}}"  class="{{request()->is('*team*') ? 'side-menu__item active' : 'side-menu__item'}}" >
+                        <i class="bx bx-user side-menu__icon"></i>
+                        <span class="side-menu__label">Our Team</span>
+                    </a>
+                </li>
+
+
+                <li class="slide">
+                    <a href="{{route('testimonial.index')}}"  class="{{request()->is('*testimonial*') ? 'side-menu__item active' : 'side-menu__item'}}" >
+                        <i class="bx bx-star side-menu__icon"></i>
+                        <span class="side-menu__label">Testimonials</span>
                     </a>
                 </li>
 

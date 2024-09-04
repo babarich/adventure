@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Book;
 use App\Models\Faq;
 use App\Models\HomeContent;
 use App\Models\Media;
+use App\Models\Team;
+use App\Models\Testimonal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -32,8 +35,12 @@ class PageController extends Controller
                     ->get();
         return view('about', compact('customer','special','offer','travels'));
     }
+
+
+
     public function blog(Request $request)  {
-        return view('blog');
+        $blogs = Blog::query()->orderBy('updated_at', 'desc')->get();
+        return view('blog', compact('blogs'));
     }
     public function coming(Request $request)  {
         return view('coming');
@@ -126,6 +133,14 @@ class PageController extends Controller
         $exploreContent = $homeContents->get('Explore Content');
         $newsContent = $homeContents->get('Newsletter Content');
 
+        $blogs = Blog::query()->orderBy('updated_at', 'desc')->get();
+
+
+
+        $teams = Team::query()->orderBy('updated_at', 'desc')->get();
+
+
+        $testimonials = Testimonal::query()->orderBy('updated_at', 'desc')->get();
 
         return view('welcome', compact(
             'customer', 'special', 'offer', 'travels', 'faqs',
@@ -135,7 +150,7 @@ class PageController extends Controller
             'tourTitle', 'tourContent', 'choose1', 'choose2', 'choose3',
             'choose4', 'choosePara1', 'choosePara2', 'choosePara3',
             'choosePara4', 'serviceTitle', 'serviceContent',
-            'exploreContent', 'newsContent'
+            'exploreContent', 'newsContent','blogs', 'teams','testimonials'
         ));
 
 

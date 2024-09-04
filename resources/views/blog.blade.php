@@ -1,6 +1,6 @@
 @extends('layouts.app')
-  @section('hero')       
-  <section class="hero">
+  @section('hero')
+  <section class="hero" style="height: 300px !important;">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-11 col-md-12 text-center" data-aos="fade">
@@ -32,90 +32,27 @@
                 </div>
                 <div class="blogCards mt-lg-5 mt-md-4">
                     <div class="row gap-4 justify-content-center card-text">
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
-                            <div>
-                                <figure><img src="assets/images/blog/blog-1.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Traveller</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua…. </p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="500">
-                            <div>
-                                <figure><img src="assets/images/blog/blog-2.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Vacation</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua….</p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="900">
-                            <div>
-                                <figure><img src="assets/images/blog/blog-3.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Boating</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua….</p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
-                            <div>
-                                <figure><img src="assets/images/blog/blog-4.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Boating</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua….</p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="500">
-                            <div>
-                                <figure><img src="assets/images/blog/blog-5.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Boating</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua….</p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="900">
-                            <div>
-                                <figure><img src="assets/images/blog/blog-6.png" alt="tour-img"></figure>
-                                <a href="#">
-                                    <p class="blogCategory">Boating</p>
-                                </a>
-                                <a href="#">
-                                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing.</h6>
-                                </a>
-                                <p>Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Dolore Magna Aliqua….</p>
-                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-
+                        @if(count($blogs) > 0)
+                            @foreach($blogs as $blog)
+                                <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
+                                    <div>
+                                        <figure><img src="data:image/jpeg;base64,{{ $blog->image }}" alt="tour-img" style="max-height: 350px"></figure>
+                                        <a href="#">
+                                            <p class="blogCategory">{{$blog->tag}}</p>
+                                        </a>
+                                        <a href="#">
+                                            <h6>{{$blog->title}}</h6>
+                                        </a>
+                                        <p>{{isset($blog->content) ? substr($blog->content,0,30) . '...' : ''}} </p>
+                                        <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
         </section>
         <!-- ====== End 1.15 blog section ====== -->
   @endsection
-  
-  
+
