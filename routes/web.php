@@ -70,6 +70,9 @@ Route::group(['middleware' => 'auth'], function (){
                 Route::get('index', 'index')->name('index');
                 Route::get('create', 'create')->name('create');
                 Route::post('store', 'store')->name('store');
+                Route::post('update/{id?}', 'update')->name('update');
+                Route::get('edit/{id?}', 'edit')->name('edit');
+                Route::post('delete/{id?}', 'delete')->name('delete');
             });
         });
     });
@@ -123,6 +126,20 @@ Route::group(['middleware' => 'auth'], function (){
     Route::group(['prefix' => 'testimonials'], function (){
         Route::name('testimonial.')->group(function (){
             Route::controller(\App\Http\Controllers\TestimonialController::class)->group(function (){
+                Route::get('index', 'index')->name('index');
+                Route::get('create', 'create')->name('create');
+                Route::post('store', 'store')->name('store');
+                Route::post('update/{id?}', 'update')->name('update');
+                Route::get('edit/{id?}', 'edit')->name('edit');
+                Route::get('show/{id?}', 'show')->name('show');
+                Route::post('delete/{id?}', 'delete')->name('delete');
+            });
+        });
+    });
+
+    Route::group(['prefix' => 'travels'], function (){
+        Route::name('travel.')->group(function (){
+            Route::controller(\App\Http\Controllers\TravelController::class)->group(function (){
                 Route::get('index', 'index')->name('index');
                 Route::get('create', 'create')->name('create');
                 Route::post('store', 'store')->name('store');

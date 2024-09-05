@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('hero')       
+  @section('hero')
  <!-- ====== 5.1 hero section ====== -->
             <section class="hero">
                 <div class="container">
@@ -10,7 +10,7 @@
                                 <div class="d-flex justify-content-center gap-4 pt-4">
                                     <nav aria-label="breadcrumb">
                                         <div class="breadcrumb d-flex gap-4 align-items-center">
-                                            <div class="breadcrumb-item"><a href="index.html">Home</a></div>
+                                            <div class="breadcrumb-item"><a href="{{route('home')}}">Home</a></div>
                                             <i class="fa-solid fa-angles-right"></i>
                                             <div class="breadcrumb-item" aria-current="page">Destinations</div>
                                         </div>
@@ -69,7 +69,7 @@
         <!-- ====== End 1.14 about section ====== -->
 
         <!-- ====== 1.6 tours section ====== -->
-        <section id="tour">
+        <section id="tour" style="background: none">
             <div class="container">
                 <div data-aos="fade" data-aos-duration="2000">
                     <h4>Tour</h4>
@@ -83,7 +83,7 @@
                         <div class="globalBtnActive">
                             <ul>
                                 <li>
-                                    <a href="services.html"> Our Services
+                                    <a href="{{route('service')}}"> Our Services
                                         <span></span><span></span><span></span><span></span>
                                     </a>
                                 </li>
@@ -93,17 +93,19 @@
                 </div>
                 <div class="tourCards card-text mt-5">
                     <div class="row gap-4 ">
-                      @foreach($travels as $travel)
-                        <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="100">
-                            <div>
-                                <figure><img src="data:image/jpeg;base64,{{ $travel->image }}" alt="travel"></figure>
-                                <h6>Explore beauty of Turkey</h6>
-                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
-                                <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
+                        @if(count($travels) > 0)
+                            @foreach($travels as $travel)
+                                <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="100">
+                                    <div>
+                                        <figure><img src="data:image/jpeg;base64,{{ $travel->image }}" alt="travel"></figure>
+                                        <h6>{{$travel->title}}</h6>
+                                        <p>{{isset($travel->content) ? substr($travel->content,0,100)  . '...' : ''}}</p>
+                                        <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            @endforeach
 
-                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -131,5 +133,4 @@
 
 
   @endsection
-  
-  
+

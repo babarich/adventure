@@ -6,7 +6,7 @@
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="d-flex flex-row-reverse">
-                <a class="btn btn-primary" href="{{route('content.create')}}"><i class="bx bx-plus"></i> Add New Content</a>
+                <a class="btn btn-primary" href="{{route('travel.create')}}"><i class="bx bx-plus"></i> Add New Travel</a>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         <div class="col-xl-12">
             <div class="card custom-card">
                 <div class="card-header">
-                    <div class="card-title">Contents List</div>
+                    <div class="card-title">Travel List</div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -23,32 +23,37 @@
                             <thead>
                             <tr>
                                 <th>SN</th>
-                                <th>Type </th>
+                                <th>Title </th>
                                 <th>Content</th>
+                                <th>Image</th>
                                 <th>Created At</th>
                                 <th>Action </th>
-
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($homes as $home)
+                            @foreach($travels as $travel)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$home->type}}</td>
-                                    <td>{{$home->content}}</td>
-                                    <td>{{$home->created_at}}</td>
+                                    <td>{{$travel->title}}</td>
+                                    <td>{{$travel->content}}</td>
                                     <td>
-                                        <a href="{{route('content.edit', $home->id)}}" class="btn btn-sm btn-primary btn-wave waves-effect waves-light">
+                                        <img src="data:image/jpeg;base64,{{ $travel->image }}" alt="travel" style="height: 50px; width: 50px" >
+                                    </td>
+
+                                    <td>{{$travel->created_at}}</td>
+                                    <td>
+                                        <a href="{{route('travel.edit', $travel->id)}}" class="btn btn-sm btn-primary btn-wave waves-effect waves-light">
                                             <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
                                         </a>
+                                        <a href="{{route('travel.show', $travel->id)}}" class="btn btn-sm btn-success btn-wave waves-effect waves-light">
+                                            <i class="ri-eye-line align-middle me-2 d-inline-block"></i>View
+                                        </a>
 
-
-                                        <a class="btn btn-sm btn-danger btn-wave waves-effect waves-light deleteHome"
-                                           data-id="{{$home->id}}">
+                                        <a class="btn btn-sm btn-danger btn-wave waves-effect waves-light deleteTravel"
+                                           data-id="{{$travel->id}}">
                                             <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
                                         </a>
                                     </td>
-
                                 </tr>
                             @endforeach
 
@@ -67,7 +72,7 @@
         @section('scripts')
             <script>
                 $(document).ready(function (){
-                    $('#file-export').on('click', '.deleteHome', function (){
+                    $('#file-export').on('click', '.deleteTravel', function (){
                         var id = $(this).data('id');
                         const swalWithBootstrapButtons = Swal.mixin({
                             customClass: {
@@ -87,7 +92,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 $.ajax({
-                                    url:'{{route('content.delete',['id' => ''])}}' + '/' + id,
+                                    url:'{{route('travel.delete',['id' => ''])}}' + '/' + id,
                                     type:'POST',
                                     data:{
                                         _token:'{{csrf_token()}}',

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('hero')       
+  @section('hero')
   <section class="hero">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -9,7 +9,7 @@
                                 <div class="d-flex justify-content-center gap-4 pt-4">
                                     <nav aria-label="breadcrumb">
                                         <div class="breadcrumb d-flex gap-4 align-items-center">
-                                            <div class="breadcrumb-item"><a href="index.html">Home</a></div>
+                                            <div class="breadcrumb-item"><a href="{{route('home')}}">Home</a></div>
                                             <i class="fa-solid fa-angles-right"></i>
                                             <div class="breadcrumb-item" aria-current="page">About</div>
                                         </div>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </section>
-  
+
   @endsection
 
   @section('content')
@@ -32,13 +32,8 @@
                         <div class="col-lg-10 col-md-9" data-aos="fade" data-aos-duration="2000">
                             <div>
                                 <h4>About Us</h4>
-                                <h2>With Us, You Are Always In For A Pleasant Surprise</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <h2>{{$aboutTitle->content ?? ''}}</h2>
+                                <p>{{$aboutContent->content ?? ''}}</p>
                                 <div class="globalBtnActive justify-content-md-start justify-content-center mt-3">
                                     <ul>
                                         <li>
@@ -54,7 +49,11 @@
                     </div>
                     <div class="col-lg-4 col-sm-9 col-12 about-Image">
                         <div class="aboutImg position-relative mt-md-0 mt-5" data-aos="fade-up">
-                            <figure><img src="assets/images/about/about-img.png" alt="about-sec"></figure>
+                            @if($customer)
+                                <figure>
+                                    <img src="data:image/jpeg;base64,{{ $customer->image }}" alt="about-sec">
+                                </figure>
+                            @endif
                             <div class="customer d-flex flex-column justify-content-between align-items-center">
                                 <div class="d-flex">
                                     <h2 class="count">25 </h2>
@@ -86,7 +85,10 @@
                                     <span class="fa-solid fa-play"></span>
                                 </a>
                             </div>
-                            <figure><img src="assets/images/about/wedo-img.png" alt="weDo"></figure>
+                            @if($what)
+                                <figure><img src="data:image/jpeg;base64,{{ $what->image }}" alt="weDo"></figure>
+                            @endif
+
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-center align-content-center">
@@ -115,7 +117,7 @@
         </section>
         <!-- ====== End 1.9 what we do section ====== -->
 
-       
+
         <!-- ====== 1.7 why choose us section ====== -->
         <section id="choose" style="background-image:none;">
             <div class="chooseBg">
@@ -140,36 +142,32 @@
                         <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
                             <div>
                                 <figure><img src="assets/images/icon/choose-1.svg" alt="chooseIcon"></figure>
-                                <h6>Tour and Travel</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                                    incididunt
+                                <h6>{{$choose1->content ?? ''}}</h6>
+                                <p>{{$choosePara1->content ?? ''}}
                                 </p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
                             <div>
                                 <figure><img src="assets/images/icon/choose-2.svg" alt="chooseIcon"></figure>
-                                <h6>campus</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                                    incididunt
+                                <h6>{{$choose2->content ?? ''}}</h6>
+                                <p>{{$choosePara2->content ?? ''}}
                                 </p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
                             <div>
                                 <figure><img src="assets/images/icon/choose-3.svg" alt="chooseIcon"></figure>
-                                <h6>Adventure Tour</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                                    incididunt
+                                <h6>{{$choose3->content ?? ''}}</h6>
+                                <p>{{$choosePara3->content ?? ''}}
                                 </p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 d-lg-block d-none" data-aos="fade-up" data-aos-delay="1300">
                             <div>
                                 <figure><img src="assets/images/icon/choose-4.svg" alt="chooseIcon"></figure>
-                                <h6>photography</h6>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-                                    incididunt
+                                <h6>{{$choose4->content ?? ''}}</h6>
+                                <p>{{$choosePara4->content ?? ''}}
                                 </p>
                             </div>
                         </div>
@@ -187,60 +185,20 @@
                     <h2>Experience The World With Us</h2>
                 </div>
                 <div class="row justify-content-md-between justify-content-center gap-md-0 gap-4">
-                    <div class=" col-md-4 col-sm-8 col-10" data-aos="fade-up" data-aos-delay="100">
-                        <div class="teamCard">
-                            <img src="assets/images/about/team-img1.png" alt="teamimg">
-                            <div class="overlaythree">
-                                <div class="overlay_text">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                                    </div>
+                    @if(count($teams) > 0)
+                        @foreach($teams as $team)
+                            <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
+                                <div class="teamCard">
+                                    <figure><img src="data:image/jpeg;base64,{{ $team->image }}" alt="tour-img" style="max-height: 350px"></figure>
+                                </div>
+                                <div>
+                                    <h6>{{$team->name}}</h6>
+                                    <p>{{$team->title}}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <h6>James Bowel</h6>
-                            <p>Tour Guide</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-8 col-10" data-aos="fade-up" data-aos-delay="500">
-                        <div class="teamCard">
-                            <img src="assets/images/about/team-img2.png" alt="teamimg">
-                            <div class="overlaythree">
-                                <div class="overlay_text">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h6>Lucy Amanda</h6>
-                            <p>Tour Guide</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-8 col-10" data-aos="fade-up" data-aos-delay="900">
-                        <div class="teamCard">
-                            <img src="assets/images/about/team-img3.png" alt="teamimg">
-                            <div class="overlaythree">
-                                <div class="overlay_text">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h6>Victoria Bells</h6>
-                            <p>Tour Guide</p>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
+
                 </div>
             </div>
         </section>
@@ -282,5 +240,4 @@
         </div>
         <!-- ====== End 1.13 logoipsum section ====== -->
   @endsection
-  
-  
+

@@ -41,7 +41,17 @@
                                             </td>
                                             <td>{{$faq->created_at}}</td>
                                             <td>
+                                                <a href="{{route('faq.edit', $faq->id)}}" class="btn btn-sm btn-primary btn-wave waves-effect waves-light">
+                                                    <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
+                                                </a>
+                                                <a href="{{route('faq.show', $faq->id)}}" class="btn btn-sm btn-success btn-wave waves-effect waves-light">
+                                                    <i class="ri-eye-line align-middle me-2 d-inline-block"></i>View
+                                                </a>
 
+                                                <a class="btn btn-sm btn-danger btn-wave waves-effect waves-light deleteFaq"
+                                                   data-id="{{$faq->id}}">
+                                                    <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
+                                                </a>
                                            </td>
                                        </tr>
                                    @endforeach
@@ -61,7 +71,7 @@
         @section('scripts')
             <script>
                 $(document).ready(function (){
-                    $('#file-export').on('click', '.deleteGroup', function (){
+                    $('#file-export').on('click', '.deleteFaq', function (){
                         var id = $(this).data('id');
                         const swalWithBootstrapButtons = Swal.mixin({
                             customClass: {
@@ -81,7 +91,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 $.ajax({
-                                    url:'{{route('manage.delete',['id' => ''])}}' + '/' + id,
+                                    url:'{{route('faq.delete',['id' => ''])}}' + '/' + id,
                                     type:'POST',
                                     data:{
                                         _token:'{{csrf_token()}}',

@@ -17,28 +17,31 @@
                             <div class="col-xl-12">
                                 <label for="job-title" class="form-label">Category Name</label>
                                 <select type="text" class="form-control" id="name" placeholder="" name="name">
-                                    <option value="">Select..</option>
-                                     <option value="Hero Home">Hero Home</option>
-                                     <option value="Happy Customer">Happy Customer</option>
-                                      <option value="Speicial Offer 1">Special Offer 1</option>
-                                       <option value="Speicial Offer 2">Special Offer 2</option>
-                                        <option value="Travel Background">Travel Background</option>
-                                       <option value="Travel">Travel</option>
-                                        <option value="Choose Us">Choose Us</option>
-                                         <option value="Stories">Stories</option>
-                                          <option value="Explore">Explore</option>
-                                           <option value="Experience">Experience</option>
-                                            <option value="Faq">Faq</option>
-                                             <option value="Planning">Planning</option>
-                                              <option value="Blog">Blog</option>
-                                               <option value="Hero About">Hero About</option>
-                                                <option value="Hero Blog">Hero Blog</option>
-                                                 <option value="Hero Contact">Hero Contact</option>
-                                                  <option value="Hero Service">Hero Service</option>
-                                                   <option value="Hero Destination">Hero Destination</option>
-                                                    <option value="Hero Testimonial">Hero Testimonial</option>
-                                                     <option value="Hero Team">Hero Team</option>
-                                                      <option value="Team">Team</option>
+                                <option value="">Select..</option>
+                                 <option value="Hero Home">Hero Home</option>
+                                 <option value="Happy Customer">Happy Customer</option>
+                                  <option value="Special Offer 1">Special Offer 1</option>
+                                   <option value="Special Offer 2">Special Offer 2</option>
+                                    <option value="Travel Background">Travel Background</option>
+                                   <option value="Travel">Travel</option>
+                                    <option value="Choose Us">Choose Us</option>
+                                     <option value="Stories">Stories</option>
+                                      <option value="Explore">Explore</option>
+                                       <option value="Experience">Experience</option>
+                                        <option value="Faq">Faq</option>
+                                         <option value="Planning">Planning</option>
+                                          <option value="Blog">Blog</option>
+                                            <option value="Service Small">Service Small</option>
+                                            <option value="Service Large">Service Large</option>
+                                            <option value="What Do">What We Do</option>
+                                           <option value="Hero About">Hero About</option>
+                                            <option value="Hero Blog">Hero Blog</option>
+                                             <option value="Hero Contact">Hero Contact</option>
+                                              <option value="Hero Service">Hero Service</option>
+                                               <option value="Hero Destination">Hero Destination</option>
+                                                <option value="Hero Testimonial">Hero Testimonial</option>
+                                                 <option value="Hero Team">Hero Team</option>
+                                                  <option value="Team">Team</option>
                                 </select>
                                 @error('name')
                                 <span class="text-danger"><strong>{{$message}}</strong></span>

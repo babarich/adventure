@@ -52,8 +52,8 @@
                             </div>
                             <div class="col-xl-12">
                                 <label for="job-title" class="form-label">Content</label>
-                                <input type="file" class="form-control" id="content" placeholder="" name="content"
-                                       value="{{$content->content}}"/>
+                                <input type="text" class="form-control" id="content" placeholder="" name="content"
+                                       value="{{old('content', $content->content)}}"/>
                                 @error('content')
                                 <span class="text-danger"><strong>{{$message}}</strong></span>
                                 @enderror

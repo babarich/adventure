@@ -74,6 +74,13 @@
                     </a>
                 </li>
 
+                <li class="slide">
+                    <a href="{{route('travel.index')}}"  class="{{request()->is('*travel*') ? 'side-menu__item active' : 'side-menu__item'}}" >
+                        <i class="bx bx-transfer side-menu__icon"></i>
+                        <span class="side-menu__label">Our Tours</span>
+                    </a>
+                </li>
+
 
                 <li class="slide">
                     <a href="{{route('team.index')}}"  class="{{request()->is('*team*') ? 'side-menu__item active' : 'side-menu__item'}}" >

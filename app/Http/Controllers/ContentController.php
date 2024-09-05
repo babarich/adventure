@@ -6,6 +6,7 @@ use App\Models\HomeContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ContentController extends Controller
 {
@@ -83,4 +84,24 @@ class ContentController extends Controller
 
         return redirect()->route('content.index')->with('success', 'You have added an Faq successfully');
     }
+
+
+
+
+
+    public function delete(Request $request, $id){
+
+        $content = HomeContent::findOrFail($id);
+        try {
+            $content->delete();
+        }catch (\Exception $e){
+            Log::info('error_delete', [$e]);
+            return redirect()->back()->with('error', 'Something went wrong please try again later');
+        }
+
+        return redirect()->route('content.index')->with('success', 'Content deleted successfully.');
+    }
+
+
+
 }

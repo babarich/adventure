@@ -106,7 +106,6 @@
                                 @if($customer)
                                 <img src="data:image/jpeg;base64,{{ $customer->image }}" alt="about-sec">
                                 @endif
-
                             </figure>
                             <div class="customer d-flex flex-column justify-content-between align-items-center">
                                 <div class="d-flex">
@@ -212,14 +211,14 @@
                     </div>
                 </div>
                 <div class="tourCards card-text mt-5">
-                    <div class="row gap-4 ">
+                    <div class="row gap-4 justify-content-center card-text">
                         @if(count($travels) > 0)
-                        @foreach($travels as $travel)
+                        @foreach($travels->slice(0, 3) as $travel)
                         <div class="col-md-4 col-sm-5 col-11" data-aos="fade-up" data-aos-delay="100">
                             <div>
                                 <figure><img src="data:image/jpeg;base64,{{ $travel->image }}" alt="travel"></figure>
-                                <h6>Explore beauty of Turkey</h6>
-                                <p>Lorem ipsum dolor sit amet, sit consecte adipiscing elit, sed </p>
+                                <h6>{{$travel->title}}</h6>
+                                <p>{{isset($travel->content) ? substr($travel->content,0,100)  . '...' : ''}}</p>
                                 <a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
@@ -293,7 +292,7 @@
         <!-- ====== End 1.7 why choose us section ====== -->
 
         <!-- ====== 1.8 services section ====== -->
-        <section id="services">
+        <section id="services" style="background: none">
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
@@ -305,21 +304,24 @@
                             <div class="row align-items-center gap-lg-3 gap-md-4 text-lg-start text-center">
                                 <div class="col-md-3">
                                     <div>
-                                        <figure><img src="assets/images/icon/services-1.svg" alt="servicesIcon">
+                                        <figure>
+                                            <img src="assets/images/icon/services-1.svg" alt="servicesIcon">
                                         </figure>
                                         <h6>Custom Destinations</h6>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div>
-                                        <figure><img src="assets/images/icon/services-3.svg" alt="servicesIcon">
+                                        <figure>
+                                            <img src="assets/images/icon/services-3.svg" alt="servicesIcon">
                                         </figure>
                                         <h6>Unforgettable Moments</h6>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div>
-                                        <figure><img src="assets/images/icon/services-2.svg" alt="servicesIcon">
+                                        <figure>
+                                            <img src="assets/images/icon/services-2.svg" alt="servicesIcon">
                                         </figure>
                                         <h6>Competitive Pricings</h6>
                                     </div>
@@ -329,7 +331,7 @@
                                 class="globalBtnActive d-flex justify-content-md-start justify-content-center mt-lg-3 mt-md-3 mt-4">
                                 <ul>
                                     <li>
-                                        <a href="services.html">See all services
+                                        <a href="{{route('service')}}">See all services
                                             <span></span><span></span><span></span><span></span>
                                         </a>
                                     </li>
@@ -339,8 +341,14 @@
                     </div>
                     <div class="col-md-5 mt-md-0 mt-5" data-aos="fade-up" data-aos-easing="ease-in-out-quad">
                         <div>
-                            <figure><img src="assets/images/index/services-img1.png" alt="service-img"></figure>
-                            <figure><img src="assets/images/index/services-img2.png" alt="ser-Camera"></figure>
+                            @if($serviceLarge)
+                            <figure><img src="data:image/jpeg;base64,{{ $serviceLarge->image }}"  alt="service-img"></figure>
+                            @endif
+
+                            @if($serviceSmall)
+                            <figure><img src="data:image/jpeg;base64,{{ $serviceSmall->image }}"  alt="ser-Camera"
+                                style="height: 200px;"></figure>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -354,12 +362,9 @@
                 <div class="row">
                     <div class="col-md-6 d-flex justify-content-center">
                         <div class="weDo-video">
-                            <div>
-                                <a class="video-play-button" href="#">
-                                    <span class="fa-solid fa-play"></span>
-                                </a>
-                            </div>
-                            <figure><img src="assets/images/index/wedo-img.png" alt="weDo"></figure>
+                            @if($what)
+                                <figure><img src="data:image/jpeg;base64,{{ $what->image }}" alt="weDo"></figure>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-center align-content-center">
@@ -395,7 +400,7 @@
                 </div>
                 <div class="row justify-content-md-between justify-content-center gap-md-0 gap-4">
                     @if(count($teams) > 0)
-                        @foreach($teams as $team)
+                        @foreach($teams->slice(0,3) as $team)
                             <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
                                 <div class="teamCard">
                                     <figure><img src="data:image/jpeg;base64,{{ $team->image }}" alt="tour-img" style="max-height: 350px"></figure>
@@ -422,15 +427,15 @@
                         <h2>Have Answers, Will Travel.</h2>
                     </div>
                     <div class="accordion" id="accordionExample" data-aos="fade">
-                        @foreach($faqs  as $key => $faq)
+                        @foreach($faqs as $key => $faq)
                             <div class="accordion-item">
-                                <h6 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse{{$key}}"
-                                            data-bs-target="#collapseOne{{$key}}" aria-expanded="true" aria-controls="collapseOne">
+                                <h6 class="accordion-header" id="heading{{$key}}">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse{{$key}}" aria-expanded="true" aria-controls="collapse{{$key}}">
                                         {{$faq->title}}
                                     </button>
                                 </h6>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                <div id="collapse{{$key}}" class="accordion-collapse collapse @if($key === 0) show @endif" aria-labelledby="heading{{$key}}"
                                      data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p>
@@ -440,6 +445,7 @@
                                 </div>
                             </div>
                         @endforeach
+
 
                     </div>
                 </div>
@@ -456,7 +462,7 @@
                         <h2>We're All About Your Satisfaction</h2>
                     </div>
                     @if(count($testimonials) > 0)
-                        @foreach($testimonials as $testimonial)
+                        @foreach($testimonials->slice(0,3) as $testimonial)
                             <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
                                 <div class="d-flex flex-column align-items-center justify-content-center">
                                     <figure></figure>
@@ -524,7 +530,7 @@
                 <div class="blogCards mt-lg-5 mt-md-4">
                     <div class="row gap-4 justify-content-center card-text">
                         @if(count($blogs) > 0)
-                            @foreach($blogs as $blog)
+                            @foreach($blogs->slice(0, 3) as $blog)
                                 <div class="col-md-4 col-sm-9 col-11" data-aos="fade-up" data-aos-delay="100">
                                     <div>
                                         <figure><img src="data:image/jpeg;base64,{{ $blog->image }}" alt="tour-img" style="max-height: 350px"></figure>

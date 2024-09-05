@@ -9,10 +9,11 @@ use App\Models\HomeContent;
 use App\Models\Media;
 use App\Models\Team;
 use App\Models\Testimonal;
+use App\Models\Travel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use PgSql\Lob;
+
 
 class PageController extends Controller
 {
@@ -22,18 +23,46 @@ class PageController extends Controller
         ->orderBy('updated_at', 'desc')
         ->first();
            $special = Media::query()
-        ->where('category', 'Speicial Offer 1')
+        ->where('category', 'Special Offer 1')
         ->orderBy('updated_at', 'desc')
         ->first();
            $offer = Media::query()
-        ->where('category', 'Speicial Offer 2')
+        ->where('category', 'Special Offer 2')
         ->orderBy('updated_at', 'desc')
         ->first();
-        $travels = Media::query()
-                    ->where('category', 'Travel')
-                    ->orderBy('updated_at', 'desc')
-                    ->get();
-        return view('about', compact('customer','special','offer','travels'));
+
+        $what = Media::query()
+            ->where('category', 'What Do')
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+        $teams = Team::query()->orderBy('updated_at', 'desc')->get();
+
+        $homeContents = HomeContent::query()
+            ->whereIn('type', [
+                 'About-Title', 'About-Content',  'Choose Card 1',
+                'Choose Card 2', 'Choose Card 3', 'Choose Card 4', 'Choose Para 1', 'Choose Para 2',
+                'Choose Para 3', 'Choose Para 4'
+            ])
+            ->get()
+            ->keyBy('type');
+
+
+
+        $aboutTitle = $homeContents->get('About-Title');
+        $aboutContent = $homeContents->get('About-Content');
+        $choose1 = $homeContents->get('Choose Card 1');
+        $choose2 = $homeContents->get('Choose Card 2');
+        $choose3 = $homeContents->get('Choose Card 3');
+        $choose4 = $homeContents->get('Choose Card 4');
+        $choosePara1 = $homeContents->get('Choose Para 1');
+        $choosePara2 = $homeContents->get('Choose Para 2');
+        $choosePara3 = $homeContents->get('Choose Para 3');
+        $choosePara4 = $homeContents->get('Choose Para 4');
+
+
+        return view('about', compact('customer','special','offer','teams',
+            'what','aboutTitle', 'aboutContent','choose1','choose2','choose3', 'choose4','choosePara1', 'choosePara2', 'choosePara3','choosePara4'));
     }
 
 
@@ -49,19 +78,67 @@ class PageController extends Controller
         return view('contact');
     }
     public function destination(Request $request)  {
-        return view('destination');
+
+        $travels = Travel::query()
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        return view('destination', compact('travels'));
     }
     public function faq(Request $request)  {
-        return view('faq');
+        $faqs = Faq::query()->orderBy('updated_at', 'desc')
+            ->get();
+        return view('faq', compact('faqs'));
     }
     public function service(Request $request)  {
-        return view('service');
+
+        $special = Media::query()
+            ->where('category', 'Special Offer 1')
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+        $offer = Media::query()
+            ->where('category', 'Special Offer 2')
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+        $serviceSmall = Media::query()
+            ->where('category', 'Service Small')
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+        $serviceLarge = Media::query()
+            ->where('category', 'Service Large')
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+        $homeContents = HomeContent::query()
+            ->whereIn('type', [
+                 'Special 1', 'Special 2',
+                'Special Para1', 'Special Para2'
+            ])
+            ->get()
+            ->keyBy('type');
+
+        $specialOne = $homeContents->get('Special 1');
+        $specialTwo = $homeContents->get('Special 2');
+        $specialPara1 = $homeContents->get('Special Para1');
+        $specialPara2 = $homeContents->get('Special Para2');
+
+
+        return view('service', compact('special','offer',
+            'serviceSmall','serviceLarge','specialOne','specialTwo','specialPara1','specialPara2'));
     }
     public function team(Request $request)  {
-        return view('team');
+
+        $teams = Team::query()->orderBy('updated_at', 'desc')->get();
+
+        return view('team', compact('teams'));
     }
     public function testimonial(Request $request)  {
-        return view('testimonial');
+        $testimonials = Testimonal::query()->orderBy('updated_at', 'desc')->get();
+
+        return view('testimonial', compact('testimonials'));
     }
 
        public function found(Request $request)  {
@@ -75,16 +152,33 @@ class PageController extends Controller
             ->where('category', 'Happy Customer')
             ->orderBy('updated_at', 'desc')
             ->first();
+
            $special = Media::query()
-            ->where('category', 'Speicial Offer 1')
+            ->where('category', 'Special Offer 1')
             ->orderBy('updated_at', 'desc')
             ->first();
            $offer = Media::query()
-            ->where('category', 'Speicial Offer 2')
+            ->where('category', 'Special Offer 2')
             ->orderBy('updated_at', 'desc')
             ->first();
-        $travels = Media::query()
-                    ->where('category', 'Travel')
+
+        $serviceSmall = Media::query()
+            ->where('category', 'Service Small')
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+        $serviceLarge = Media::query()
+            ->where('category', 'Service Large')
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+
+        $what = Media::query()
+            ->where('category', 'What Do')
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+        $travels = Travel::query()
                     ->orderBy('updated_at', 'desc')
                     ->get();
 
@@ -150,7 +244,7 @@ class PageController extends Controller
             'tourTitle', 'tourContent', 'choose1', 'choose2', 'choose3',
             'choose4', 'choosePara1', 'choosePara2', 'choosePara3',
             'choosePara4', 'serviceTitle', 'serviceContent',
-            'exploreContent', 'newsContent','blogs', 'teams','testimonials'
+            'exploreContent', 'newsContent','blogs', 'teams','testimonials','serviceSmall', 'serviceLarge', 'what'
         ));
 
 

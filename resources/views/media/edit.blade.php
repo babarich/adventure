@@ -20,7 +20,8 @@
                                     <option value="">Select..</option>
                                      <option value="Hero Home" {{old('name', $image->category === 'Hero Home' ? 'selected' : '')}}>Hero Home</option>
                                      <option value="Happy Customer" {{old('name', $image->category === 'Happy Customer' ? 'selected' : '')}}>Happy Customer</option>
-                                      <option value="Speicial Offer" {{old('name', $image->category === 'Special Offer' ? 'selected' : '')}}>Special Offer</option>
+                                      <option value="Special Offer 1" {{old('name', $image->category === 'Special Offer 1' ? 'selected' : '')}}>Special Offer 1</option>
+                                      <option value="Special Offer 2" {{old('name', $image->category === 'Special Offer 2' ? 'selected' : '')}}>Special Offer 2</option>
                                        <option value="Travel" {{old('name', $image->category === 'Travel' ? 'selected' : '')}}>Travel</option>
                                         <option value="Choose Us" {{old('name', $image->category === 'Choose Us' ? 'selected' : '')}}>Choose Us</option>
                                          <option value="Stories" {{old('name', $image->category === 'Stories' ? 'selected' : '')}}>Stories</option>
@@ -29,6 +30,9 @@
                                             <option value="Faq" {{old('name', $image->category === 'Faq' ? 'selected' : '')}}>Faq</option>
                                              <option value="Planning" {{old('name', $image->category === 'Planning' ? 'selected' : '')}}>Planning</option>
                                               <option value="Blog" {{old('name', $image->category === 'Blog' ? 'selected' : '')}}>Blog</option>
+                                                <option value="Service Small" {{old('name', $image->category === 'Service Small' ? 'selected' : '')}}>Service Small</option>
+                                                <option value="Service Large" {{old('name', $image->category === 'Service Large' ? 'selected' : '')}}>Service Large</option>
+                                                 <option value="What Do" {{old('name', $image->category === 'What Do' ? 'selected' : '')}}>What We Do</option>
                                                <option value="Hero About" {{old('name', $image->category === 'Hero About' ? 'selected' : '')}}>Hero About</option>
                                                 <option value="Hero Blog" {{old('name', $image->category === 'Hero Blog' ? 'selected' : '')}}>Hero Blog</option>
                                                  <option value="Hero Contact" {{old('name', $image->category === 'Hero Contact' ? 'selected' : '')}}>Hero Contact</option>

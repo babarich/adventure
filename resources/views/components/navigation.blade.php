@@ -1,6 +1,6 @@
 <header>
                    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-lg-0 sticky-top w-100" style="background-color: #FB8E26; position: fixed; top: 0; z-index: 1030;">
-  
+
 
                         <div class="container-fluid">
                             <!-- logo -->
@@ -37,8 +37,7 @@
                                             <li><a class="dropdown-item" href="{{route('testimonial')}}"> Testimonials </a>
                                             <li><a class="dropdown-item" href="{{route('faq')}}"> FAQ </a>
                                             <li><a class="dropdown-item" href="{{route('team')}}"> Team </a></li>
-                                            <li><a class="dropdown-item" href="{{route('coming')}}"> Coming Soon </a></li>
-                                            <li><a class="dropdown-item" href="{{route('found')}}"> 404 </a></li>
+
                                         </ul>
                                     </li>
                                 </ul>

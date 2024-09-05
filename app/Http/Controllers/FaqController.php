@@ -6,6 +6,7 @@ use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 class FaqController extends Controller
@@ -24,8 +25,6 @@ class FaqController extends Controller
     {
         return view('faq.create');
     }
-
-
 
 
     public function store(Request $request)
@@ -69,6 +68,36 @@ class FaqController extends Controller
         }
 
         return redirect()->route('faq.index')->with('success', 'You have updated an Faq successfully');
+    }
+
+
+
+
+    public function edit(Request $request, $id){
+        $faq = Faq::findOrFail($id);
+        return view('faq.edit', compact('faq'));
+    }
+
+
+    public function show(Request $request, $id){
+        $faq = Faq::findOrFail($id);
+        return view('faq.view', compact('faq'));
+    }
+
+
+
+
+    public function delete(Request $request, $id){
+
+        $faq = Faq::findOrFail($id);
+        try {
+            $faq->delete();
+        }catch (\Exception $e){
+            Log::info('error_delete', [$e]);
+            return redirect()->back()->with('error', 'Something went wrong please try again later');
+        }
+
+        return redirect()->route('faq.index')->with('success', 'Faq deleted successfully.');
     }
 
 

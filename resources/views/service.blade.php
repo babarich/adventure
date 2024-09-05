@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('hero')       
+  @section('hero')
    <section class="hero">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -9,7 +9,7 @@
                                 <div class="d-flex justify-content-center gap-4 pt-4">
                                     <nav aria-label="breadcrumb">
                                         <div class="breadcrumb d-flex gap-4 align-items-center">
-                                            <div class="breadcrumb-item"><a href="index.html">Home</a></div>
+                                            <div class="breadcrumb-item"><a href="{{route('home')}}">Home</a></div>
                                             <i class="fa-solid fa-angles-right"></i>
                                             <div class="breadcrumb-item" aria-current="page">Services</div>
                                         </div>
@@ -84,8 +84,14 @@
                     </div>
                     <div class="col-md-5 mt-md-0 mt-5" data-aos="fade-up" data-aos-easing="ease-in-out-quad">
                         <div>
-                            <figure><img src="assets/images/index/services-img1.png" alt="service-img"></figure>
-                            <figure><img src="assets/images/index/services-img2.png" alt="ser-Camera"></figure>
+                            @if($serviceLarge)
+                                <figure><img src="data:image/jpeg;base64,{{ $serviceLarge->image }}"  alt="service-img"></figure>
+                            @endif
+
+                            @if($serviceSmall)
+                                <figure><img src="data:image/jpeg;base64,{{ $serviceSmall->image }}"  alt="ser-Camera"
+                                             style="height: 200px;"></figure>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -103,7 +109,7 @@
                     <div class="globalBtn mt-lg-5 mt-md-5">
                         <ul>
                             <li>
-                                <a href="contact.html">contact us
+                                <a href="{{route('contact')}}">contact us
                                     <span></span><span></span><span></span><span></span>
                                 </a>
                             </li>
@@ -161,11 +167,14 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class=" col-md-6" data-aos="fade-up">
-                        <h3>Special Offer for Couples</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                        <h3> {{$specialOne->content ?? ''}}</h3>
+                        <p>
+                            {{$specialPara1->content ?? ''}}
                         </p>
                         <div class="offer">
-                            <img src="assets/images/index/special-img2.png" alt="discount">
+                            @if($offer)
+                                <img src="data:image/jpeg;base64,{{$offer->image}}"  alt="discount">
+                            @endif
                             <div class="overlaytwo">
                                 <div class="overlay_text">
                                     <h3>Discount up 50%</h3>
@@ -184,7 +193,9 @@
                     </div>
                     <div class="col-md-6 mt-md-0 mt-4" data-aos="fade-down">
                         <div class="offer">
-                            <img src="assets/images/index/special-img1.png" alt="discount">
+                            @if($special)
+                                <img src="data:image/jpeg;base64,{{ $special->image }}" alt="discount">
+                            @endif
                             <div class="overlaytwo">
                                 <div class="overlay_text">
                                     <h3>Discount up 50%</h3>
@@ -200,9 +211,9 @@
                                 </div>
                             </div>
                         </div>
-                        <h3>Special Offer
-                            on Adventure tours</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                        <h3>{{$specialTwo->content ?? ''}}</h3>
+                        <p>
+                            {{$specialPara2->content ?? ''}}
                         </p>
                     </div>
                 </div>
@@ -211,5 +222,4 @@
         <!-- ====== End 1.5 special offer section ====== -->
 
   @endsection
-  
-  
+

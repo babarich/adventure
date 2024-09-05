@@ -1,5 +1,5 @@
 @extends('layouts.app')
-  @section('hero')       
+  @section('hero')
  <section class="hero">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -9,7 +9,7 @@
                                 <div class="d-flex justify-content-center gap-4 pt-4">
                                     <nav aria-label="breadcrumb">
                                         <div class="breadcrumb d-flex gap-4 align-items-center">
-                                            <div class="breadcrumb-item"><a href="index.html">Home</a></div>
+                                            <div class="breadcrumb-item"><a href="{{route('home')}}">Home</a></div>
                                             <i class="fa-solid fa-angles-right"></i>
                                             <div class="breadcrumb-item" aria-current="page">Contact</div>
                                         </div>
@@ -99,5 +99,4 @@
         <!-- ====== End 9.2 contact section ====== -->
 
   @endsection
-  
-  
+

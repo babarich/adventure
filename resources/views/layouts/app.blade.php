@@ -22,7 +22,7 @@
     background-blend-mode: multiply;
     overflow: hidden;
             }
-        </style>
+    </style>
 
 @php
 $images = App\Models\Media::query()->where('category', 'Hero Home')->orderBy('updated_at', 'desc')->get();
@@ -63,10 +63,10 @@ $images = App\Models\Media::query()->where('category', 'Hero Home')->orderBy('up
                         <div>
                             <h4>Quick Links</h4>
                             <div class="footer-links d-flex flex-column">
-                                <a href="index.html">Home</a>
-                                <a href="about.html">About</a>
-                                <a href="destinations.html">Destination</a>
-                                <a href="contact.html">Contact</a>
+                                <a href="{{route('home')}}">Home</a>
+                                <a href="{{route('about')}}">About</a>
+                                <a href="{{route('destination')}}">Destination</a>
+                                <a href="{{route('contact')}}">Contact</a>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ $images = App\Models\Media::query()->where('category', 'Hero Home')->orderBy('up
                     <hr>
                     <div class="row sub-footer justify-content-between align-items-center">
                         <div class="col-md-5">
-                            <figure><a href="#"><img src="assets/images/logo.svg" alt="footerLogo"></a></figure>
+                            <figure><a href="{{route('home')}}"><img src="assets/images/logo.svg" alt="footerLogo"></a></figure>
                         </div>
                         <div class="col-md-6">
                             <div>
